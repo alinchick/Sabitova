@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report</title>
+  <style>
+
+    
+    html, body {
+      height: 100%;
+    }
+
+    html {
+      height: 100%; 
+      width: 100%;
+      display: table;
+      margin: auto;
+    }
+
+    body {
+      display: table-cell;
+      vertical-align: middle;
+      font-family: Verdana, sans-serif;
+      font-weight: 400;
+      margin: auto;
+    }   
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 850px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2, caption {
+      margin-bottom: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: auto;
+      margin-top: 30px;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      text-align: center;
+      padding: 5px;
+    }
+
+    .space {
+      border-top: #fff;
+      border-bottom: #fff;
+      padding: 10px;
+    }
+
+  </style>
+</head>
+<body>
+    <h1>
+      Аналитика по зарплатам и городам для<br>профессии {{  name  }}
+    </h1>
+
+    <div class="items"><img src="C:\Users\Home\PycharmProjects\0709firstTask\graph.png" alt="Графики статистики"></div>
+
+    <table class="statistics-by-year" border="0" cellspacing="0" cellpadding="0">
+      <caption><h2>Статистика по годам</h2></caption>
+      <tr>
+        <th>{{  names_sheet1[0]  }}</th>
+        <th>{{  names_sheet1[1]  }}</th>
+        <th>{{  names_sheet1[2]  }}</th>
+        <th>{{  names_sheet1[3]  }}</th>
+        <th>{{  names_sheet1[4]  }}</th>
+      </tr>
+      {% for year, value in salary_lvl_by_year.items() %}
+        <tr>
+          <td>{{  year  }}</td>
+          <td>{{  value  }}</td>
+          <td>{{  salary_lvl_by_year_for_prof[year]  }}</td>
+          <td>{{  count_vac_by_year[year]  }}</td>
+          <td>{{  count_vac_by_year_for_prof[year]  }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <table class="statistics-by-city">
+      <caption><h2>Статистика по городам</h2></caption>
+      <tr>
+        <th>{{  names_sheet2[0]  }}</th>
+        <th>{{  names_sheet2[1]  }}</th>
+        <th class="space"></th>
+        <th>{{  names_sheet2[2]  }}</th>
+        <th>{{  names_sheet2[3]  }}</th>
+      </tr>
+      {% for city in statistics_by_city_dic %}
+        <tr>
+            <td>{{ city[0] }}</td>
+            <td>{{ salary_lvl_by_city[city[0]] }}</td>
+            <td class="space"></td>
+            <td>{{ city[1] }}</td>
+            <td>{{ vacancy_rate_by_city[city[1]] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+</body>
+</html>
