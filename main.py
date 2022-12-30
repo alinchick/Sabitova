@@ -837,7 +837,7 @@ def main():
     elif type_of_report == "Статистика":
         create_pdf()
     else:
-        print("Неверный тип отчета!")
+        print("Неверный СтарыйГод отчета!")
         exit(0)
 
 
